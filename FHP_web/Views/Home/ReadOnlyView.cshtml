@@ -10,8 +10,8 @@
     <form method="post" action="/Home/SigleTrainee">
         <div>
             <label asp-for="SerialNumber"></label> <br />
-            
-            <input asp-for="SerialNumber"/>
+
+            <input asp-for="SerialNumber" />
         </div>
         <div>
             <label asp-for="Prefix"></label>
@@ -50,19 +50,11 @@
             <textarea asp-for="CurrentAddress"></textarea>
         </div>
         <div>
+            <button>First</button>
+            <button>Previous</button>
+            <button>Next</button>
+            <button>Last</button>
 
-            <input type="submit" value="Add" />
-            <input type="submit" value="Update" />
-            <input type="reset" value="Clear" />
-
-           @*   @if (Model==null)
-             {
-                 <input type="submit" value="Add"/>
-             }
-             else
-             {
-                 <input type="submit" value="Update" />
-             } *@
         </div>
     </form>
 </div>

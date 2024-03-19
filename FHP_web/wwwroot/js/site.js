@@ -114,6 +114,7 @@ function RenderRowData(data) {
 }
 
 let currentSelectedRow; // holds which row is currently selected
+
 // ------- adding click functionality to the row pointer for selecting the row
 function RowPointerSelection() {
     var allRows = document.querySelectorAll('#traineeDataTable tbody tr');
@@ -123,7 +124,10 @@ function RowPointerSelection() {
             allRows[row].style.backgroundColor = "#F7EEDD";
             currentSelectedRow = row;
             ToggleNavMenuBtns();
-        })
+        });
+        allRows[row].querySelector('td').addEventListener('dblclick', function () {
+            ReadOnlyViewTrainee();
+        });
     }
 }
 function IdOfCurrentSelectedRow() {
@@ -139,8 +143,20 @@ function ClearSelection(allRows) {
     }
 }
 
+function ReadOnlyViewTrainee() {
+    $.ajax({
+        url: "Home/ReadOnlyView/" + IdOfCurrentSelectedRow(),
+        type: "GET",
+        success: function (data) {
+            document.getElementById("modalContainer").style.display = "block";
+            $("#modalContainer").html(data);
+        },
+        error: function (error) {
+            console.error("Error loading registration content:", error);
+        }
+    })
+}
 function GetTraineeData() {
-    console.log("Getting trainee data for: " + IdOfCurrentSelectedRow());
     $.ajax({
         url: "Home/SigleTrainee/" + IdOfCurrentSelectedRow(),
         type: "GET",

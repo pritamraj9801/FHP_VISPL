@@ -86,6 +86,12 @@ namespace FHP_web.Controllers
             }
 
         }
+        public ActionResult ReadOnlyView(int? id)
+        {
+            TraineeRepository traineeRepository = new TraineeRepository();
+            Trainee? trainee = traineeRepository.GetAllTrainee().Where(t => t.SerialNumber == id).FirstOrDefault();
+            return View(trainee);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
