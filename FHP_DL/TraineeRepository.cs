@@ -30,7 +30,8 @@ namespace FHP_DL
         }
         public List<Trainee> GetAllTrainee()
         {
-            return dataHandler.GetAllTrainee();
+            List<Trainee> trainees = dataHandler.GetAllTrainee();
+            return trainees;
         }
         public bool Delete(Trainee trainee)
         {

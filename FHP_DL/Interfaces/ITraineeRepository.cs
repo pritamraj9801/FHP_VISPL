@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FHP_DL
 {
-    internal interface ITraineeRepository
+    public interface ITraineeRepository
     {
         bool Add(Trainee trainee);
         List<Trainee> GetAllTrainee();

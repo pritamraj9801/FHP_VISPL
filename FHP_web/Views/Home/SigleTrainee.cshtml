@@ -7,14 +7,15 @@
             <span class="line20px marginBottom7px"></span>
         </h3>
     </div>
-    <form method="post">
+    <form method="post" action="/Home/SigleTrainee">
         <div>
             <label asp-for="SerialNumber"></label> <br />
-            <input asp-for="SerialNumber" disabled/>
+            
+            <input asp-for="SerialNumber"/>
         </div>
         <div>
-           <label asp-for="Prefix"></label>
-           <input asp-for="Prefix"/>
+            <label asp-for="Prefix"></label>
+            <input asp-for="Prefix" />
         </div>
         <div>
             <label asp-for="FirstName"></label> <br />
@@ -49,7 +50,14 @@
             <textarea asp-for="CurrentAddress"></textarea>
         </div>
         <div>
-            <input type="submit"/>
+            @if (Model==null)
+            {
+                <input type="submit" value="Add"/>
+            }
+            else
+            {
+                <input type="submit" value="Update" />
+            }
         </div>
     </form>
 </div>

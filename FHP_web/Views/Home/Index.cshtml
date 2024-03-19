@@ -2,10 +2,42 @@
     ViewData["Title"] = "Home Page";
 }
 
+@* ------- nav bar*@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="nav-bar">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <button class="nav-link activeBtn" id="newBtn" onClick="GetTraineeData()" href="">New</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link disableBtn" id="editBtn" onClick="GetTraineeData()" href="">Edit</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link disableBtn" id="deleteBtn" asp-area="" asp-controller="" asp-action="">Delete</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link activeBtn" href="" id="clearAllFilters">Clear Search</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link activeBtn"  asp-controller="About" asp-action="Index">About Us</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
 <h1 id="mainScreenScreen">Welcome to FHP</h1>
 
 <div id="modalContainer">
-<div id="registrationContainer"></div>
+    <div id="registrationContainer"></div>
 </div>
 
 <table id="traineeDataTable">
@@ -28,34 +60,45 @@
         <tr id="filterBoxRow">
             <td></td>
             <td>
-                <input type="text" name="name" value="" class="textSearchBox"/>
+                <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
+
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
             <td>
                 <input type="text" name="name" value="" class="textSearchBox" />
+                <span class="close_btn noDisplay"><i class="bi bi-x-circle-fill"></i></span>
             </td>
         </tr>
     </tbody>

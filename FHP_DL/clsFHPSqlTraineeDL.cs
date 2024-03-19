@@ -3,28 +3,23 @@ using FHP_Res.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace FHP_DL
 {
-    internal class clsFHPSqlTraineeDL: ITraineeRepository
+    public class clsFHPSqlTraineeDL : ITraineeRepository
     {
         private readonly string connectionString;
-        private string filePath = Environment.CurrentDirectory + @"\Resources\appConfig.ini";
+        private string filePath = @"D:\.Net Development\FHP_VERTEX\Build\Resources\appConfig.ini";
         public clsFHPSqlTraineeDL()
         {
             IniFilesHandle iniFile = new IniFilesHandle(filePath);
             connectionString = iniFile.IniReadValue("Db", "ConnectionString");
         }
         public bool Add(Trainee trainee)
-        {   
+        {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 string query = @"INSERT INTO Trainee (prefix, first_name, middle_name, last_name, education, joining_date, current_company, current_address, date_of_birth) 
                          VALUES (@Prefix, @FirstName, @MiddleName, @LastName, @Education, @JoiningDate, @CurrentCompany, @CurrentAddress, @DateOfBirth)";
-
                 using (SqlCommand command = new SqlCommand(query, sqlConnection))
                 {
                     command.Parameters.AddWithValue("@Prefix", trainee.Prefix);
@@ -108,15 +103,16 @@ namespace FHP_DL
             {
                 using (SqlCommand command = new SqlCommand(query, sqlConnection))
                 {
-                    command.Parameters.AddWithValue("@Prefix", trainee.Prefix);
-                    command.Parameters.AddWithValue("@FirstName", trainee.FirstName);
-                    command.Parameters.AddWithValue("@MiddleName", trainee.MiddleName);
-                    command.Parameters.AddWithValue("@LastName", trainee.LastName);
-                    command.Parameters.AddWithValue("@Education", trainee.Education);
-                    command.Parameters.AddWithValue("@JoiningDate", trainee.JoiningDate);
-                    command.Parameters.AddWithValue("@CurrentCompany", trainee.CurrentCompany);
-                    command.Parameters.AddWithValue("@CurrentAddress", trainee.CurrentAddress);
-                    command.Parameters.AddWithValue("@DateOfBirth", trainee.DateOfBirth);
+                    command.Parameters.AddWithValue("@Id", trainee.SerialNumber);
+                    command.Parameters.AddWithValue("@Prefix", (object)trainee.Prefix ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@FirstName", (object)trainee.FirstName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@MiddleName", (object)trainee.MiddleName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@LastName", (object)trainee.LastName ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@Education", (object)trainee.Education ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@JoiningDate", (object)trainee.JoiningDate ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@CurrentCompany", (object)trainee.CurrentCompany ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@CurrentAddress", (object)trainee.CurrentAddress ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@DateOfBirth", (object)trainee.DateOfBirth ?? DBNull.Value);
 
                     sqlConnection.Open();
                     int rowsAffected = command.ExecuteNonQuery();
